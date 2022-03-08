@@ -4,8 +4,9 @@ This is the image cropping tool to creat image dataset.
 
 ## Requirement
 
-* OpenCV
-* NumPy
+* Python 3.9.7
+* OpenCV 4.5.1
+* NumPy 1.21.5
 
 ## Manual
 
