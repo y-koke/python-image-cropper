@@ -21,7 +21,6 @@ import numpy as np
 
 
 class Points():
-
     def __init__(self):
         self.min_x = 0
         self.min_y = 0
@@ -44,9 +43,8 @@ class Points():
 
 
 def mouse_event(event, x, y, flags, params):
-
     name, img, points = params
-
+    
     if event == cv2.EVENT_LBUTTONDOWN:
         points.set_min(x,y)
         h, w = img.shape[0], img.shape[1]
@@ -80,14 +78,12 @@ def main():
     args = parser.parse_args()
 
     filenames = glob.glob( os.path.join(args.data_dir, '*') )
-
     points = Points()
-
+    
     i = 0
     num_files = len(filenames)
-    if args.skip > 0 & args.skip < num_files:
+    if 0 < args.skip & args.skip < num_files:
         i = args.skip
-
     if args.start:
         j = 0
         for filename in filenames:
@@ -120,7 +116,7 @@ def main():
             while (True):
                 key = cv2.waitKey(1)&0xFF
                 if key == ord('f'):
-                    if i >= len(filenames) - 1:
+                    if i >= len(filenames)-1:
                         i -= 1
                     break
 
@@ -132,7 +128,7 @@ def main():
                 if key == ord('s'):
                     min_x, min_y = points.get_min()
                     max_x, max_y = points.get_max()
-                    cv2.imwrite( os.path.join(args.save_dir, name) , img[min_y:max_y, min_x:max_x] )
+                    cv2.imwrite( os.path.join(args.save_dir, name), img[min_y:max_y, min_x:max_x] )
                     if i >= len(filenames) - 1:
                         i -= 1
                     break
